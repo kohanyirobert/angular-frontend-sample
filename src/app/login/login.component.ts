@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   getAuth() {
     this.authService.getAuth(this.loginDetails).subscribe(user => {
       sessionStorage.setItem('user', JSON.stringify(user));
-      this.router.navigateByUrl('/');
+      this.router.navigate(['dashboard']);
     }, error => alert(error.message));
   }
 }

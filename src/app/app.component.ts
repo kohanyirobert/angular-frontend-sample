@@ -1,8 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
-import { AuthService } from './auth.service';
-import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +8,4 @@ import { UserService } from './user.service';
 export class AppComponent {
 
   constructor() { }
-
 }

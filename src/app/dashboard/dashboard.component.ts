@@ -13,6 +13,7 @@ import { User } from '../user';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  user = JSON.parse(sessionStorage.getItem('user'));
   users: User[] = [];
   passwordChange: PasswordChange = new PasswordChange();
   newUser: NewUser = new NewUser();
