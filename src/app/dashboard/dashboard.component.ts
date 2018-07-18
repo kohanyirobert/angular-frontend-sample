@@ -27,10 +27,7 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteAuth() {
-    const clearAuth = () => {
-      sessionStorage.clear();
-      this.router.navigate(['login']);
-    };
+    const clearAuth = () => this.router.navigate(['login']);
     this.authService.deleteAuth().subscribe(clearAuth, clearAuth);
   }
 
@@ -39,10 +36,12 @@ export class DashboardComponent implements OnInit {
   }
 
   changePassword() {
-    this.userService.changePassword(this.passwordChange).subscribe(console.log);
+    this.userService.changePassword(this.passwordChange)
+      .subscribe(response => alert(JSON.stringify(response)));
   }
 
   addUser() {
-    this.userService.addUser(this.newUser).subscribe(console.log);
+    this.userService.addUser(this.newUser)
+      .subscribe(response => alert(JSON.stringify(response)));
   }
 }
