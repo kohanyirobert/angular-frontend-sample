@@ -27,7 +27,16 @@
 <label>Confirmation Password: </label>
 <input [(ngModel)]="passwordChange.confirmationPassword">
 <br>
-<button (click)="changePassword()">Post</button>
+<button (click)="changePassword()">Change Password</button>
+
+<h1>Change Username</h1>
+<label>User ID: </label>
+<input [(ngModel)]="usernameChange.userId">
+<br>
+<label>New Username: </label>
+<input [(ngModel)]="usernameChange.newUsername">
+<br>
+<button (click)="changeUsername()">Change Username</button>
 
 <h1>Logout</h1>
 <button (click)="deleteAuth()">Delete Auth</button>

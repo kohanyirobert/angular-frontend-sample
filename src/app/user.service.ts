@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { User } from './user';
 import { NewUser } from './new-user';
 import { PasswordChange } from './password-change';
+import { UsernameChange } from './username-change';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,12 @@ export class UserService {
       oldPassword: passwordChange.oldPassword,
       newPassword: passwordChange.newPassword,
       confirmationPassword: passwordChange.confirmationPassword
+    });
+  }
+
+  changeUsername(usernameChange: UsernameChange): Observable<void> {
+    return this.http.post<void>(`/api/users/${usernameChange.userId}/change-username`, {
+      newUsername: usernameChange.newUsername
     });
   }
 

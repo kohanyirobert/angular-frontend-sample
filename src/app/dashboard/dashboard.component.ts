@@ -3,9 +3,10 @@ import { AuthService } from '../auth.service';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 
+import { User } from '../user';
 import { NewUser } from '../new-user';
 import { PasswordChange } from '../password-change';
-import { User } from '../user';
+import { UsernameChange } from '../username-change';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,6 +17,7 @@ export class DashboardComponent implements OnInit {
   user = JSON.parse(sessionStorage.getItem('user'));
   users: User[] = [];
   passwordChange: PasswordChange = new PasswordChange();
+  usernameChange: UsernameChange = new UsernameChange();
   newUser: NewUser = new NewUser();
 
   constructor(
@@ -37,6 +39,11 @@ export class DashboardComponent implements OnInit {
 
   changePassword() {
     this.userService.changePassword(this.passwordChange)
+      .subscribe(response => alert(JSON.stringify(response)));
+  }
+
+  changeUsername() {
+    this.userService.changeUsername(this.usernameChange)
       .subscribe(response => alert(JSON.stringify(response)));
   }
 
