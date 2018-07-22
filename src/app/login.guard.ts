@@ -13,12 +13,8 @@ export class LoginGuard implements CanActivate {
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.authService.getAuth().pipe(
-      map(user => {
-        sessionStorage.setItem('user', JSON.stringify(user));
-        return true;
-      }),
+      map(user => true),
       catchError(error => {
-        sessionStorage.clear();
         this.router.navigate(['login']);
         return of(false);
       }
