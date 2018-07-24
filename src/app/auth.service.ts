@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { StompRService } from '@stomp/ng2-stompjs';
 import { Observable } from 'rxjs';
 import { isUndefined } from 'util';
 
@@ -12,7 +13,7 @@ import { LoginDetails } from './login-details';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private stompService: StompRService) { }
 
   getAuth(loginDetails?: LoginDetails): Observable<User> {
     const httpOptions = {};
@@ -25,6 +26,7 @@ export class AuthService {
   }
 
   deleteAuth(): Observable<void> {
+    this.stompService.disconnect();
     return this.http.delete<void>('/api/auth');
   }
 }

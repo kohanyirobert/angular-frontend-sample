@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { StompRService } from '@stomp/ng2-stompjs';
 
 import { httpInterceptorProviders } from './http-interceptors';
 
@@ -25,7 +26,8 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule
   ],
   providers: [
-    httpInterceptorProviders
+    httpInterceptorProviders,
+    StompRService
   ],
   bootstrap: [AppComponent]
 })
