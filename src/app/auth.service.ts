@@ -1,3 +1,5 @@
+declare var TextEncoder: any;
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -18,8 +20,11 @@ export class AuthService {
   getAuth(loginDetails?: LoginDetails): Observable<User> {
     const httpOptions = {};
     if (!isUndefined(loginDetails)) {
+      const credentials = loginDetails.username + ':' + loginDetails.password;
+      const bytes = new TextEncoder().encode(credentials);
+      const base64 = window.btoa(String.fromCharCode.apply(null, bytes));
       httpOptions['headers'] = new HttpHeaders({
-          'Authorization': 'Basic ' + window.btoa(loginDetails.username + ':' + loginDetails.password)
+          'Authorization': 'Basic ' + base64
       });
     }
     return this.http.get<User>('/api/auth', httpOptions);
