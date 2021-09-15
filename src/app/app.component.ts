@@ -8,9 +8,9 @@ import { InitService } from './init.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private intiService: InitService) { }
+  constructor(private initService: InitService) { }
 
   ngOnInit(): void {
-    this.intiService.init().subscribe();
+    this.initService.init().subscribe();
   }
 }

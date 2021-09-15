@@ -36,7 +36,8 @@ export class UserService {
     return this.http.post<User>('/api/users', {
       username: newUser.username,
       password: newUser.password,
-      confirmationPassword: newUser.confirmationPassword
+      confirmationPassword: newUser.confirmationPassword,
+      role: newUser.role
     });
   }
 }

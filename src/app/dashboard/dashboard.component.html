@@ -5,6 +5,10 @@
 <pre>{{ users | json }}</pre>
 <button (click)="getUsers()">Get Users</button>
 
+<h1>Authorities</h1>
+<pre>{{ authorities | json }}</pre>
+<button (click)="getAuthorities()">Get Authorities</button>
+
 <h1>Add User</h1>
 <label>Username: </label>
 <input [(ngModel)]="newUser.username">
@@ -14,6 +18,9 @@
 <br>
 <label>Confirmation Password: </label>
 <input [(ngModel)]="newUser.confirmationPassword">
+<br>
+<label>Role: </label>
+<input [(ngModel)]="newUser.role">
 <br>
 <button (click)="addUser()">Post</button>
 

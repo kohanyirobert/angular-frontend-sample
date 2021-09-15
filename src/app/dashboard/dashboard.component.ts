@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 
 import { AuthService } from '../auth.service';
+import { AuthorityService } from '../authority.service';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { NewUser } from '../new-user';
@@ -20,6 +21,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   user = {};
   users: User[] = [];
+  authorities: string[] = [];
   passwordChange: PasswordChange = new PasswordChange();
   usernameChange: UsernameChange = new UsernameChange();
   newUser: NewUser = new NewUser();
@@ -29,6 +31,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   constructor(
     private authService: AuthService,
+    private authorityService: AuthorityService,
     private userService: UserService,
     private stompService: StompRService,
     private router: Router) { }
@@ -56,6 +59,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   getUsers() {
     this.userService.getUsers().subscribe(users => this.users = users);
+  }
+
+  getAuthorities() {
+    this.authorityService.getAuthorities().subscribe(authorities => this.authorities = authorities)
   }
 
   changePassword() {
